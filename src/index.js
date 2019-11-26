@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import LocalWeather from './classes/localWeather';
 import {store} from './store/store'
 import {Provider} from "react-redux";
+import MainLayout from "./classes/mainLayout";
 
 
 ReactDOM.render(
     <Provider store={store}>
-        <LocalWeather />
+        <MainLayout />
     </Provider>,
     document.getElementById('root')
 );

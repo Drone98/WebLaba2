@@ -6,7 +6,6 @@ import Error from "./error";
 class LocalCity extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             data: {},
             loading: true,

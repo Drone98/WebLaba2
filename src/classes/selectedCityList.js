@@ -1,5 +1,5 @@
 import React from 'react'
-import FavouriteCity from './selectedCity'
+import SelectedCity from './selectedCity'
 import {addCity} from '../store/action/actionCreator'
 import {connect} from "react-redux";
 
@@ -17,7 +17,7 @@ class SelectedCityList extends React.Component {
     getItems() {
         let items = [];
         this.props.items.forEach(item => {
-            items.push(<FavouriteCity key={item.name} name={item.name}/>);
+            items.push(<SelectedCity key={item.name} name={item.name}/>);
         });
         return items;
     }
