@@ -6,7 +6,7 @@ import SelectedCityList from "./selectedCityList";
 class MainLayout extends React.Component {
     render() {
         return (
-            <div>
+            <div  id="main_layout">
                 <LocalWeather />
                 <SelectedCityList />
             </div>

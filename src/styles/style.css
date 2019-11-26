@@ -1,7 +1,7 @@
-.weather_here {
-  margin: 0 auto;
+.local_weather {
+  margin: auto;
   display: flex;
-  width: 830px;
+  width: 840px;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
@@ -9,7 +9,7 @@
 
 .about {
   display: grid;
-  width: 380px;
+  width: 400px;
   align-items: center;
   justify-content: space-between;
   grid-template-areas:
@@ -62,6 +62,11 @@ li {
   width: 380px;
   color: cornsilk;
   background-color: dimgray;
+}
+
+#main_layout{
+  min-height: 800px;
+  background: #f2ef85;
 }
 
 .container {

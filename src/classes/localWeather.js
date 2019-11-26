@@ -30,7 +30,7 @@ class LocalWeather extends React.Component {
     render() {
         console.log('lat: ' + this.state.lat + ' lon: ' + this.state.lon);
         return (
-                <div className="weather_here">
+                <div className="local_weather">
                     <div className="header">
                         <div className="part">Ваша погода</div>
                         <button className="button" onClick={this.getLocation.bind(this)}>Обновить геолокацию</button>
