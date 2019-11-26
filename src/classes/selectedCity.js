@@ -1,5 +1,5 @@
 import React from 'react'
-import {deleteCity} from '../store/action/actionCreator'
+import {deleteCity} from '../storage/action/actionCreator'
 import {connect} from 'react-redux';
 import axios from 'axios/index';
 import Loader from './loader';

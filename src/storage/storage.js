@@ -4,8 +4,8 @@ import thunk from 'redux-thunk';
 
 let persistedState = localStorage.getItem('state') ? JSON.parse(localStorage.getItem('state')) : [];
 
-export const store = createStore(reducer, persistedState, applyMiddleware(thunk));
+export const storage = createStore(reducer, persistedState, applyMiddleware(thunk));
 
-store.subscribe(() => {
-    localStorage.setItem('state', JSON.stringify(store.getState()));
+storage.subscribe(() => {
+    localStorage.setItem('state', JSON.stringify(storage.getState()));
 });
