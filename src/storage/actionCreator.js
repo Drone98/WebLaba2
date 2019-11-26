@@ -1,4 +1,3 @@
-
 export function addCity(name) {
     return (dispatch) => {
         dispatch({

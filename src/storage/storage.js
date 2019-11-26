@@ -1,5 +1,5 @@
 import {applyMiddleware, createStore} from "redux";
-import reducer from './reducers/reducer';
+import reducer from './reducer';
 import thunk from 'redux-thunk';
 
 let persistedState = localStorage.getItem('state') ? JSON.parse(localStorage.getItem('state')) : [];

@@ -1,5 +1,5 @@
 import React from 'react'
-import {deleteCity} from '../storage/action/actionCreator'
+import {deleteCity} from '../storage/actionCreator'
 import {connect} from 'react-redux';
 import axios from 'axios/index';
 import Loader from './loader';
@@ -80,7 +80,7 @@ class SelectedCity extends React.Component {
                         <ul>
                             <li><span>Ветер</span> <em>{this.state.data.wind.speed} м/c</em></li>
                             <li><span>Облачность</span> <em>{this.state.data.weather[0].description}</em></li>
-                            <li><span>Давление</span> <em>{this.state.data.main.pressure} гПа</em></li>
+                            <li><span>Давление</span> <em>{this.state.data.main.pressure * 0.75} мм рт. ст.</em></li>
                             <li><span>Влажность</span> <em>{this.state.data.main.humidity} %</em></li>
                             <li><span>Координаты</span> <em>[{this.state.data.coord.lon}, {this.state.data.coord.lat}]</em></li>
                         </ul>

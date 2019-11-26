@@ -1,6 +1,6 @@
 import React from 'react'
 import SelectedCity from './selectedCity'
-import {addCity} from '../storage/action/actionCreator'
+import {addCity} from '../storage/actionCreator'
 import {connect} from "react-redux";
 
 class SelectedCityList extends React.Component {

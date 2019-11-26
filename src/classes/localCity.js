@@ -32,7 +32,7 @@ class LocalCity extends React.Component {
                 lon: this.props.lon,
                 lang: "ru",
                 units: "metric",
-                appid: "3494b8f1c8f596aee028c113d9cf5e78",
+                appid: "664a8b78c394bddfedbff1aa229519a8",
                 timeout: 1000
             }
         })
@@ -87,7 +87,7 @@ class LocalCity extends React.Component {
                         <ul>
                             <li><span>Ветер</span> <em>{this.state.data.wind.speed} м/c</em></li>
                             <li><span>Облачность</span> <em>{this.state.data.weather[0].description}</em></li>
-                            <li><span>Давление</span> <em>{this.state.data.main.pressure} гПа</em></li>
+                            <li><span>Давление</span> <em>{this.state.data.main.pressure * 0.75} мм рт. ст.</em></li>
                             <li><span>Влажность</span> <em>{this.state.data.main.humidity} %</em></li>
                             <li><span>Координаты</span> <em>[{this.state.data.coord.lon}, {this.state.data.coord.lat}]</em></li>
                         </ul>
