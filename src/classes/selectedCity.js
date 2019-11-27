@@ -21,7 +21,7 @@ class SelectedCity extends React.Component {
                 q: this.props.name,
                 lang: "ru",
                 units: "metric",
-                appid: "3494b8f1c8f596aee028c113d9cf5e78",
+                appid: "664a8b78c394bddfedbff1aa229519a8",
                 timeout: 1000
             }
         })
