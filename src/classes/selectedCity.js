@@ -37,7 +37,8 @@ class SelectedCity extends React.Component {
                 let msg = "Проблемы с интернет соединением";
                 if (error.response) {
                     if (error.response.status === 404) {
-                        msg = "Город не найден"
+                        msg = "Город не найден";
+                        setTimeout(() => this.props.deleteCity(this.props.name), 5000);
                     } else {
                         msg = "Проблемы с сервером"
                     }
