@@ -25,7 +25,6 @@ class LocalCity extends React.Component {
     }
 
     getData() {
-        console.log(this.props.lat, this.props.lon);
         axios.get("http://api.openweathermap.org/data/2.5/weather", {
             params: {
                 lat: this.props.lat,
