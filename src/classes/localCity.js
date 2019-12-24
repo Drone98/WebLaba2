@@ -2,6 +2,8 @@ import React from 'react'
 import axios from 'axios/index';
 import Loader from './loader';
 import Error from "./error";
+import {getByCoords} from '../storage/actionCreator'
+import City from "./city";
 
 class LocalCity extends React.Component {
     constructor(props) {
@@ -25,41 +27,36 @@ class LocalCity extends React.Component {
     }
 
     getData() {
-        axios.get("http://api.openweathermap.org/data/2.5/weather", {
-            params: {
-                lat: this.props.lat,
-                lon: this.props.lon,
-                lang: "ru",
-                units: "metric",
-                appid: "664a8b78c394bddfedbff1aa229519a8",
-                timeout: 1000
-            }
+        getByCoords({
+            lat: this.props.lat,
+            lon: this.props.lon
+        }, this.ifSuccess.bind(this), this.ifError.bind(this));
+
+    }
+
+    ifSuccess(response){
+        this.setState({
+            data: response.data,
+            loading: false,
+            error: false
         })
-            .then(response => {
-                this.setState({
-                    data: response.data,
-                    loading: false,
-                    error: false
-                })
-            })
-            .catch(error => {
-                console.error(error);
+    }
 
-                let msg = "Проблемы с интернет соединением";
-                if (error.response) {
-                    if (error.status === 404) {
-                        msg = "Город не найден"
-                    } else {
-                        msg = "Проблемы с сервером"
-                    }
-                }
+    ifError(error){
+        let msg = "Проблемы с интернет соединением";
+        if (error.response) {
+            if (error.status === 404) {
+                msg = "Город не найден"
+            } else {
+                msg = "Проблемы с сервером"
+            }
+        }
 
-                this.setState({
-                    data: msg,
-                    loading: false,
-                    error: true
-                })
-            });
+        this.setState({
+            data: msg,
+            loading: false,
+            error: true
+        })
     }
 
     render() {
@@ -83,13 +80,7 @@ class LocalCity extends React.Component {
                              alt="img"/>
                     </div>
                     <div className="entry">
-                        <ul>
-                            <li><span>Ветер</span> <em>{this.state.data.wind.speed} м/c</em></li>
-                            <li><span>Облачность</span> <em>{this.state.data.weather[0].description}</em></li>
-                            <li><span>Давление</span> <em>{this.state.data.main.pressure * 0.75} мм рт. ст.</em></li>
-                            <li><span>Влажность</span> <em>{this.state.data.main.humidity} %</em></li>
-                            <li><span>Координаты</span> <em>[{this.state.data.coord.lon}, {this.state.data.coord.lat}]</em></li>
-                        </ul>
+                        <City data={this.state.data}/>
                     </div>
                 </div>
             );

@@ -1,9 +1,10 @@
 import React from 'react'
-import {deleteCity} from '../storage/actionCreator'
+import {deleteCity, getByName} from '../storage/actionCreator'
 import {connect} from 'react-redux';
 import axios from 'axios/index';
 import Loader from './loader';
 import Error from "./error";
+import City from "./city";
 
 class SelectedCity extends React.Component {
     constructor(props) {
@@ -16,40 +17,38 @@ class SelectedCity extends React.Component {
     }
 
     componentDidMount() {
-        axios.get("http://api.openweathermap.org/data/2.5/weather", {
-            params: {
-                q: this.props.name,
-                lang: "ru",
-                units: "metric",
-                appid: "664a8b78c394bddfedbff1aa229519a8",
-                timeout: 1000
-            }
+        this.getData();
+    }
+
+    getData() {
+        getByName(this.props.name,
+            this.ifSuccess.bind(this),
+            this.ifError.bind(this));
+    }
+
+    ifSuccess(response){
+        this.setState({
+            data: response.data,
+            loading: false,
         })
-            .then(response => {
-                this.setState({
-                    data: response.data,
-                    loading: false,
-                });
-            })
-            .catch(error => {
-                console.error(error);
+    }
 
-                let msg = "Проблемы с интернет соединением";
-                if (error.response) {
-                    if (error.response.status === 404) {
-                        msg = "Город не найден";
-                        setTimeout(() => this.props.deleteCity(this.props.name), 5000);
-                    } else {
-                        msg = "Проблемы с сервером"
-                    }
-                }
+    ifError(error){
+        let msg = "Проблемы с интернет соединением";
+        if (error.response) {
+            if (error.response.status === 404) {
+                msg = "Город не найден";
+                setTimeout(() => this.props.deleteCity(this.props.name), 5000);
+            } else {
+                msg = "Проблемы с сервером"
+            }
+        }
 
-                this.setState({
-                    data: msg,
-                    loading: false,
-                    error: true
-                })
-            });
+        this.setState({
+            data: msg,
+            loading: false,
+            error: true
+        })
     }
 
     delete() {
@@ -78,13 +77,7 @@ class SelectedCity extends React.Component {
                         <button className="itemsButton" id="delete" onClick={this.delete.bind(this)}>x</button>
                     </div>
                     <div className="item-entry">
-                        <ul>
-                            <li><span>Ветер</span> <em>{this.state.data.wind.speed} м/c</em></li>
-                            <li><span>Облачность</span> <em>{this.state.data.weather[0].description}</em></li>
-                            <li><span>Давление</span> <em>{this.state.data.main.pressure * 0.75} мм рт. ст.</em></li>
-                            <li><span>Влажность</span> <em>{this.state.data.main.humidity} %</em></li>
-                            <li><span>Координаты</span> <em>[{this.state.data.coord.lon}, {this.state.data.coord.lat}]</em></li>
-                        </ul>
+                        <City data={this.state.data}/>
                     </div>
                 </div>
             );

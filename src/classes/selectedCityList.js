@@ -5,18 +5,16 @@ import {connect} from "react-redux";
 
 class SelectedCityList extends React.Component {
     addItem(event) {
+        console.log("Add");
         let name = event.target['city'].value;
-        let check = 0;
-        this.props.items.forEach(item => {
-            if (name === item.name)
-                check = 1;
-                });
 
-        if (this.props.items.indexOf(name) === -1 && name !== '' && !check) {
+
+        if (this.props.items.filter(item => {return item.name === name}).length === 0 && name !== '') {
             this.props.addCity(name);
             this.props.items.push(name);
-            event.preventDefault();
         }
+
+        event.preventDefault();
     }
 
     getItems() {
