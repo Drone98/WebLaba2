@@ -12,12 +12,15 @@ class SelectedCity extends React.Component {
 
         this.state = {
             data: {},
-            loading: true
+            loading: true,
+            loadState: props.loadState
         }
     }
 
     componentDidMount() {
-        this.getData();
+        if (!this.state.loadState) {
+            this.getData();
+        }
     }
 
     getData() {

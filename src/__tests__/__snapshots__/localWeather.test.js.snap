@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rendered data 1`] = `
+<div
+  className="local_weather"
+>
+  <div
+    className="header"
+  >
+    <div
+      className="part"
+    >
+      Ваша погода
+    </div>
+    <button
+      className="button"
+      onClick={[Function]}
+    >
+      Обновить геолокацию
+    </button>
+  </div>
+  <div
+    className="loader"
+  >
+    <b>
+      Загрузка
+    </b>
+    <img
+      alt=""
+      className="loading-icon"
+      src=""
+    />
+  </div>
+</div>
+`;
+
+exports[`Rendered error 1`] = `
+<div
+  className="local_weather"
+>
+  <div
+    className="header"
+  >
+    <div
+      className="part"
+    >
+      Ваша погода
+    </div>
+    <button
+      className="button"
+      onClick={[Function]}
+    >
+      Обновить геолокацию
+    </button>
+  </div>
+  <div
+    className="loader"
+  >
+    <b>
+      Загрузка
+    </b>
+    <img
+      alt=""
+      className="loading-icon"
+      src=""
+    />
+  </div>
+</div>
+`;

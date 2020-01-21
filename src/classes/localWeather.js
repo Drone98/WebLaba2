@@ -15,7 +15,7 @@ class LocalWeather extends React.Component {
     }
 
     getLocation() {
-        navigator.geolocation.getCurrentPosition(this.success.bind(this), this.error.bind(this));
+        this.props.navigator.geolocation.getCurrentPosition(this.success.bind(this), this.error.bind(this));
     }
 
     error(){
@@ -28,7 +28,6 @@ class LocalWeather extends React.Component {
     }
 
     render() {
-        console.log('lat: ' + this.state.lat + ' lon: ' + this.state.lon);
         return (
                 <div className="local_weather">
                     <div className="header">

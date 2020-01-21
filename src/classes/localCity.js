@@ -11,12 +11,15 @@ class LocalCity extends React.Component {
         this.state = {
             data: {},
             loading: true,
-            error: false
+            error: false,
+            loadState: props.loadState
         }
     }
 
     componentDidMount() {
-        this.getData();
+        if (!this.state.loadState) {
+            this.getData();
+        }
     }
 
     componentDidUpdate(prevProps) {

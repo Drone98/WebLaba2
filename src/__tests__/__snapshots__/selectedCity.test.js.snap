@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading 1`] = `
+<div
+  className="loader"
+>
+  <b>
+    Загрузка
+  </b>
+  <img
+    alt=""
+    className="loading-icon"
+    src=""
+  />
+</div>
+`;
+
+exports[`Rendered selected city 1`] = `
+<div
+  className="loader"
+>
+  <b>
+    Загрузка
+  </b>
+  <img
+    alt=""
+    className="loading-icon"
+    src=""
+  />
+</div>
+`;
+
+exports[`Server error 1`] = `
+<div
+  className="loader"
+>
+  <b>
+    Загрузка
+  </b>
+  <img
+    alt=""
+    className="loading-icon"
+    src=""
+  />
+</div>
+`;

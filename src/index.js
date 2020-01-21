@@ -7,7 +7,7 @@ import axios from 'axios'
 
 ReactDOM.render(
     <Provider store={storage}>
-        <MainLayout axios={axios} />
+        <MainLayout />
     </Provider>,
     document.getElementById('root')
 );
